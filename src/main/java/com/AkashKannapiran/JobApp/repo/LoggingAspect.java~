@@ -1,0 +1,4 @@
+package com.AkashKannapiran.JobApp.repo;
+
+public class LoggingAspect {
+}
