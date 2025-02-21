@@ -14,15 +14,14 @@ public class ValidationAspect {
 
     @Around("execution(* com.AkashKannapiran.JobApp.service.JobService.*(..)) && args(postID)")
     public Object validateAndUpdate(ProceedingJoinPoint jp, int postID) throws Throwable {
-        LOGGER.info("PostID is negative : " + postID + " Updating it!");
 
         if (postID < 0) {
+            LOGGER.info("PostID is negative : " + postID + " Updating it!");
             postID = -postID;
+            LOGGER.info("Updated PostID is : " + postID);
         }
 
         Object obj = jp.proceed(new Object[]{postID});
-
-        LOGGER.info("Updated PostID is : " + postID);
 
         return obj;
     }
